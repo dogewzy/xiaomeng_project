@@ -1,0 +1,13 @@
+{% extends 'polls/index.html' %}
+
+{% block patient_form %}
+
+
+<form  class="form-horizontal" action="http://localhost:8000/diagnose/diagnose/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="保存给此的病人诊断" />
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'polls/index.html' %}
+
+{% block patient_form %}
+
+
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>病人编号</th>
+        <th>性别</th>
+          <th>电话号码</th>
+          <th>年龄</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>{{ patient.p_name }} </td>
+          <td>{{ patient.p_number }}</td>
+          <td>{{ patient.p_sex }}</td>
+          <td>{{ patient.p_tel_number }}</td>
+          <td>{{ patient.p_age}}</td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}

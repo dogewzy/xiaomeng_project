@@ -1,0 +1,16 @@
+{% extends 'polls/index.html' %}
+
+{% block patient_form %}
+
+
+<form action="http://localhost:8000/polls/patient_edit/" method="post">
+    {% csrf_token %}
+    <p>要修改的病人编号：</p>
+    <p>{{ context.num}}</p>
+    <p>编号不可改动</p>
+    {{ context.form }}
+    <input type="submit" value="提交修改" />
+</form>
+
+
+{% endblock %}
