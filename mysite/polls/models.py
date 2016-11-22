@@ -34,6 +34,6 @@ class Patient(models.Model):
     p_number = models.IntegerField(default=0)
     p_tel_number = models.IntegerField(default=0)
     p_sex = models.CharField(choices=sex_choice, max_length=2, default='男')
-    diagnose = models.ForeignKey('diagnose.Diagnose', on_delete=models.CASCADE, related_name='+', default='')
+
 
 # Create your models here.

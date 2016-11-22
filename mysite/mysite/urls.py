@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
+    url(r'^medicine/', include('medicine.urls')),
     url(r'^diagnose/', include('diagnose.urls')),
     url(r'^registration/', include('registration.urls')),
     url(r'^polls/', include('polls.urls')),

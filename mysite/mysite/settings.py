@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'medicine.apps.MedicineConfig',
     'diagnose.apps.DiagnoseConfig',
     'registration.apps.RegistrationConfig',
     'polls.apps.PollsConfig',
