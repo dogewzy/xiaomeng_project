@@ -21,6 +21,5 @@ def add(request):
             new.save()
             return render(request, 'medicine/index.html')
     else:
-        t = 1
         form = MedicineForm()
-        return render(request, 'medicine/add.html', {'form': form, 't': t},)
+    return render(request, 'medicine/add.html', {'form': form})

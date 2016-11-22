@@ -1,0 +1,38 @@
+{% extends 'polls/index.html' %}
+
+
+{% block register_form %}
+<div class="row">
+    <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+
+    <div class="container">
+  <h2>药品信息</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>药品编号</th>
+        <th>药品名称</th>
+        <th>药品价格</th>
+         <th>计价单位</th>
+          <th>药品分类</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for m in all_medicine %}
+      <tr>
+        <td>{{ m.number }} </td>
+        <td>{{ m.name }}</td>
+        <td>{{ m.price }}</td>
+         <td>{{ m.unit }}</td>
+          <td>{{ m.sort }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+  </div>
+  <div class="col-sm-3"></div>
+</div>
+
+{% endblock %}
