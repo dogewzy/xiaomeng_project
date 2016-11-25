@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^diagnose/', include('diagnose.urls')),
     url(r'^registration/', include('registration.urls')),
     url(r'^polls/', include('polls.urls')),
+    url(r'^price/', include('price.urls')),
     url(r'^admin/', admin.site.urls),
 ]
