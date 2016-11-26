@@ -3,7 +3,6 @@ from django import forms
 
 class AddForm(forms.Form):
     药品名称 = forms.CharField(max_length=100)
-    单价 = forms.FloatField()
     数量 = forms.IntegerField()
 
 

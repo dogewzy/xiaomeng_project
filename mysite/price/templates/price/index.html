@@ -3,18 +3,7 @@
 {% block patient_form %}
 
 
-<form action="http://localhost:8000/price/" method="post">
-    {% csrf_token %}
-    {{ addform }}
-    <input type="submit" value="添加" />
-</form>
-<ul>
-    {% for price in has_add %}
-    <li>{{ price }}</li>
-    {% endfor %}
-</ul>
-
-<form action="http://localhost:8000/price/" method="post">
+<form action="http://localhost:8000/price/main_information/" method="post">
     {% csrf_token %}
     {{ priceform }}
     <input type="submit" value="提交划价" />
