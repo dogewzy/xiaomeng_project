@@ -4,6 +4,7 @@ from .forms import PatientForm, EditForm, EditToBeSaveForm
 
 
 def index(request):
+    print('222222222222222')
     return render(request, 'polls/index.html')
 
 
@@ -33,32 +34,31 @@ def patient_log(request):
 
 def patient_num(request):
     if request.method == 'POST':
-        form1 = EditForm(request.POST)
-        if form1.is_valid():
-            to_be_save = EditToBeSaveForm()
-            target_number = form1.cleaned_data['病人编号']
-            context = {
-                'form': to_be_save,
-                'num': target_number,
-            }
-            return render(request, 'polls/patient_edit.html', {'context': context,})
+        form = EditToBeSaveForm(request.POST)
+        if form.is_valid():
+            num = form.cleaned_data['病人编号']
+            new_p = Patient.objects.get(p_number=num)
+            if new_p:
+                new_p.p_name = form.cleaned_data['姓名']
+                new_p.p_sex = form.cleaned_data['性别']
+                new_p.p_age = form.cleaned_data['年龄']
+                new_p.p_tel_number = form.cleaned_data['电话号码']
+                new_p.save()
+                return render(request, 'polls/patient_edit.html')
     else:
-        form1 = EditForm()
-        return render(request, 'polls/patient_num.html', {'form1': form1})
+        form = EditToBeSaveForm()
+        return render(request, 'polls/patient_num.html', {'form': form})
 
 
 def patient_edit(request):
-    if request.method == 'POST':
-        form2 = EditToBeSaveForm(request.POST)
-        if form2.is_valid():
-            target_number = form2.cleaned_data['病人编号']
-            target_patient = Patient.objects.filter(p_number=target_number)[0]
-            target_patient.p_name = form2.cleaned_data['姓名']
-            target_patient.p_sex = form2.cleaned_data['性别']
-            target_patient.p_age = form2.cleaned_data['年龄']
-            target_patient.p_tel_number = form2.cleaned_data['电话号码']
-            target_patient.save()
-            return render(request, 'polls/patient_edit.html')
+    return render(request, 'polls/patient_edit.html')
+
+
+
+
+
+
+
 
 
 def patient_search(request):

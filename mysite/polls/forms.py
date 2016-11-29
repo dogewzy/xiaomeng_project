@@ -22,7 +22,7 @@ class EditToBeSaveForm(forms.Form):
         ('male', '男'),
         ('female', '女'),
     )
-    病人编号 = forms.IntegerField()
+    病人编号 = forms.IntegerField(label='你要修改的病人编号')
     姓名 = forms.CharField(max_length=100)
     年龄 = forms.IntegerField()
     电话号码 = forms.IntegerField()

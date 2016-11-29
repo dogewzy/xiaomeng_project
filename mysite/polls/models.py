@@ -35,5 +35,12 @@ class Patient(models.Model):
     p_tel_number = models.IntegerField(default=0)
     p_sex = models.CharField(choices=sex_choice, max_length=2, default='男')
 
+    def change(self, name, num, tel, sex):
+        self.p_name = name
+        self.p_age = num
+        self.p_tel_number = tel
+        self.p_sex = sex
+        self.save()
+
 
 # Create your models here.

@@ -32,7 +32,6 @@ def medicine_information(request):
         if form.is_valid():
             number = request.POST['number']
             the_price = Price.objects.filter(划价编号=number)[0]
-            print(the_price,'ssssssssss')
             the_price.药品信息 += form.cleaned_data['药品名称'] + '!' + str(form.cleaned_data['数量']) + '#'
             the_price.save()
             # 提取药品信息
