@@ -29,18 +29,20 @@ class Patient(models.Model):
         ('男', '男'),
         ('女', '女'),
     )
+    m_choice = (
+        ('已婚', '已婚'),
+        ('未婚', '未婚')
+    )
     p_name = models.CharField(max_length=100, default='template')
     p_age = models.IntegerField(default=0)
     p_number = models.IntegerField(default=0)
     p_tel_number = models.IntegerField(default=0)
     p_sex = models.CharField(choices=sex_choice, max_length=2, default='男')
+    p_marriage = models.CharField(choices=m_choice, max_length=2, default='已婚')
+    p_address = models.CharField(max_length=100, default='浙江', null=True)
+    p_id_num = models.CharField(max_length=100, default='id', null=True)
 
-    def change(self, name, num, tel, sex):
-        self.p_name = name
-        self.p_age = num
-        self.p_tel_number = tel
-        self.p_sex = sex
-        self.save()
+
 
 
 # Create your models here.
