@@ -1,5 +1,6 @@
 from django import forms
-
+from .models import Patient
+from django.utils.translation import ugettext_lazy as _
 
 class PatientForm(forms.Form):
     sex_choice = (
@@ -11,6 +12,22 @@ class PatientForm(forms.Form):
     病人编号 = forms.IntegerField()
     电话号码 = forms.IntegerField()
     性别 = forms.ChoiceField(choices=sex_choice)
+
+
+class TesPForm(forms.ModelForm):
+    class Meta:
+        model = Patient
+        fields = '__all__'
+        labels = {
+            'p_name': _('姓名'),
+            'p_age': _('年龄'),
+            'p_number': _('病人编号'),
+            'p_tel_number': _('电话号码'),
+            'p_sex': _('性别'),
+            'p_marriage': _('婚姻状况'),
+            'p_address': _('住址'),
+            'p_id_num': _('身份证号码'),
+        }
 
 
 class EditForm(forms.Form):

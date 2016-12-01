@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Patient
-from .forms import PatientForm, EditForm, EditToBeSaveForm
+from .forms import PatientForm, EditForm, EditToBeSaveForm, TesPForm
 
 
 def index(request):
@@ -24,11 +24,14 @@ def patient_log(request):
             new_p.p_age = form.cleaned_data['年龄']
             new_p.p_number = form.cleaned_data['病人编号']
             new_p.p_tel_number = form.cleaned_data['电话号码']
+            new_p.p_address = form.cleaned_data['住址']
+            new_p.p_marriage = form.cleaned_data['婚姻状况']
+            new_p.p_id_num = form.cleaned_data['身份证号码']
             new_p.save()
             is_ok = True
             return render(request, 'polls/patient_log.html', {'form': form, 'isok': is_ok})
     else:
-        form = PatientForm()
+        form = TesPForm()
     return render(request, 'polls/patient_log.html', {'form': form, 'isok': is_ok})
 
 

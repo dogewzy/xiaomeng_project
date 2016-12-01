@@ -33,16 +33,16 @@ class Patient(models.Model):
         ('已婚', '已婚'),
         ('未婚', '未婚')
     )
-    p_name = models.CharField(max_length=100, default='template')
-    p_age = models.IntegerField(default=0)
-    p_number = models.IntegerField(default=0)
-    p_tel_number = models.IntegerField(default=0)
+    p_name = models.CharField(max_length=100, default=' ')
+    p_age = models.IntegerField(default='')
+    p_number = models.IntegerField(default='')
+    p_tel_number = models.IntegerField(default='')
     p_sex = models.CharField(choices=sex_choice, max_length=2, default='男')
-    p_marriage = models.CharField(choices=m_choice, max_length=2, default='已婚')
-    p_address = models.CharField(max_length=100, default='浙江', null=True)
-    p_id_num = models.CharField(max_length=100, default='id', null=True)
+    p_marriage = models.CharField(choices=m_choice, max_length=2, default=' ')
+    p_address = models.CharField(max_length=100, default=' ', null=True)
+    p_id_num = models.CharField(max_length=100, default=' ', null=True)
 
 
 
 
-# Create your models here.
+
