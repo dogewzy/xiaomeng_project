@@ -44,3 +44,8 @@ class EditToBeSaveForm(forms.Form):
     年龄 = forms.IntegerField()
     电话号码 = forms.IntegerField()
     性别 = forms.ChoiceField(choices=sex_choice)
+
+
+class LoginForm(forms.Form):
+    账号 = forms.CharField(max_length=100)
+    密码 = forms.CharField(max_length=100)

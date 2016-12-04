@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from .forms import AddForm, PriceForm
-from .models import Price, Medicine
+from .forms import AddForm, PriceForm, SearchForm
+from .models import Price, Medicine, calculate
+from django.contrib.auth.decorators import permission_required
 
 
-
+@permission_required(perm='price.add_price',
+                     login_url='http://localhost:8000/polls/login/')
 def index(request):
     # 显示划价信息表单
     priceform = PriceForm()
@@ -51,3 +53,20 @@ def medicine_information(request):
 
 def result(request):
     return render(request, 'price/result.html')
+
+
+def display(request):
+
+    '''查询单个划价信息'''
+
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            num = form.cleaned_data['划价编号']
+            price = Price.objects.get(划价编号=num)
+            context = {
+
+            }
+    else:
+        form = SearchForm()
+        return render(request, 'price/search.html', {'form': form})

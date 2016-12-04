@@ -18,3 +18,14 @@ class Medicine(models.Model):
     price = models.FloatField(default=0)
     unit = models.CharField(max_length=100)
     sort = models.CharField(max_length=100)
+
+
+def calculate(price):
+    # 计算总价
+    summ = 0
+    target_str = price.药品信息
+    r = target_str.split('#')
+    for medicine in r:
+        code, num = medicine.split('!')
+        summ += Medicine.objects.get(number=code).price * int(num)
+    return summ

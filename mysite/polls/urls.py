@@ -9,4 +9,6 @@ urlpatterns = [
     url(r'^patient_edit/$', views.patient_edit, name='patient_edit'),
     url(r'^patient_search/$', views.patient_search, name='patient_search'),
     url(r'^patient_num/$', views.patient_num, name='patient_num'),
+    url(r'^login/$', views.login, name='login'),
+    url(r'^logout/$', views.logout, name='logout'),
 ]

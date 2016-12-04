@@ -1,16 +1,28 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Patient
-from .forms import PatientForm, EditForm, EditToBeSaveForm, TesPForm
+from .forms import PatientForm, EditForm, EditToBeSaveForm, TesPForm, LoginForm
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout as auth_logout
+from django.contrib.auth.decorators import permission_required, login_required
+from .decorator import perm_deco
 
 
 def index(request):
-    print('222222222222222')
     return render(request, 'polls/index.html')
 
 
+@permission_required(perm='polls.add_patient', login_url='http://localhost:8000/polls/login/')
 def patient(request):
-    all_patients = Patient.objects.order_by('id')
-    return render(request, 'polls/patient.html', {'all_patients': all_patients})
+    if request.user.has_perm('polls.add_patient'):
+        all_patients = Patient.objects.order_by('id')
+        return render(request, 'polls/patient.html', {'all_patients': all_patients})
+    else:
+        if request.user.is_anonymous():
+            return redirect('http://localhost:8000/polls/login/')
+        else:
+            return render(request, 'polls/no_permission.html')
+
 
 
 def patient_log(request):
@@ -57,13 +69,6 @@ def patient_edit(request):
     return render(request, 'polls/patient_edit.html')
 
 
-
-
-
-
-
-
-
 def patient_search(request):
     if request.method == 'POST':
         form = EditForm(request.POST)
@@ -74,4 +79,29 @@ def patient_search(request):
     else:
         form = EditForm()
         return render(request, 'polls/patient_search.html', {'form': form})
+
+
+def login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['账号']
+            password = form.cleaned_data['密码']
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                auth_login(request, user)
+                print(user.user_permissions)
+                return render(request, 'polls/patient_edit.html')
+            else:
+                pass
+    else:
+        form = LoginForm()
+        return render(request, 'polls/login.html', {'form': form})
+
+
+def logout(request):
+    auth_logout(request)
+    message = '您已经登出'
+    return render(request, 'polls/index.html', {'message': message})
+
 

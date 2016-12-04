@@ -20,8 +20,12 @@
         <li><a href="http://localhost:8000/medicine">药品管理</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-      	<li><a href="#"><span ></span> 注册</a></li>
-      	<li><a href="#"><span ></span> 登陆</a></li>
+      	<li><a href="http://localhost:8000/polls/logout"><span ></span> 登出</a></li>
+      	<li><a href="http://localhost:8000/polls/login"><span ></span> 登陆</a></li>
+        <li>
+          {% block user %}
+          {% endblock %}
+        </li>
       </ul>
     </div>
   </div>
@@ -33,4 +37,5 @@
 {% endblock %}
 
 {% block medicine_form %}
+{{ message }}
 {% endblock %}

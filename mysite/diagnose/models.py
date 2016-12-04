@@ -10,3 +10,5 @@ class Diagnose(models.Model):
     man = models.CharField(default='临时', max_length=10)
     patient = models.ForeignKey('polls.Patient', on_delete=models.CASCADE, related_name='+', null=True)
 
+    def __str__(self):
+        return str(self.d_num)

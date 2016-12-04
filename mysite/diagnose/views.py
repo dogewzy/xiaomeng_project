@@ -1,8 +1,12 @@
 from django.shortcuts import render
 from .forms import DiagnoseForm
 from .models import Diagnose
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.decorators import permission_required
 
 
+@permission_required(perm='diagnose.add_diagnose',
+                     login_url='http://localhost:8000/polls/login/')
 def index(request):
     if request.method == 'POST':
         form = DiagnoseForm(request.POST)

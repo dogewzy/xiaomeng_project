@@ -123,3 +123,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# add in 2016/12/1
+LOGIN_URL = "http://localhost:8000/polls/login"

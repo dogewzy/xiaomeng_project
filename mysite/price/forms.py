@@ -10,3 +10,7 @@ class PriceForm(forms.Form):
     划价编号 = forms.IntegerField()
     病人编号 = forms.IntegerField()
     操作人 = forms.CharField(max_length=100)
+
+
+class SearchForm(forms.Form):
+    划价编号 = forms.IntegerField()

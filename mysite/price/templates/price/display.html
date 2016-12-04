@@ -1,0 +1,26 @@
+{% extends 'polls/index.html' %}
+
+{% block patient_form %}
+
+
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>划价编号</th>
+        <th>病人编号</th>
+        <th>总费用</th>
+          <th>操作人</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>{{ context.num1 }} </td>
+          <td>{{ context.num2 }}</td>
+          <td>{{ context.cost }}</td>
+          <td>{{ context.man }}</td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}

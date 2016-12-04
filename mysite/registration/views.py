@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from .forms import RegisterForm
-from .models import RegisterModel
+from .models import Register
+from django.contrib.auth.decorators import permission_required
 
 
+@permission_required(perm='registrations.add_register',
+                     login_url='http://localhost:8000/polls/login/')
 def register(request):
     return render(request, 'registration/register.html')
 
@@ -15,7 +18,7 @@ def index(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
-            new_d = RegisterModel()
+            new_d = Register()
             new_d.cost = form.cleaned_data['费用']
             new_d.name = form.cleaned_data['姓名']
             new_d.operator = form.cleaned_data['操作人']
