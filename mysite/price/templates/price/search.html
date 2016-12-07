@@ -3,7 +3,7 @@
 {% block patient_form %}
 
 
-<form action="http://localhost:8000/price/search/" method="post">
+<form action="http://localhost:8000/price/display/" method="post">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="查询此编号的划价信息" />

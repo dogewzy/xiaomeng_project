@@ -21,7 +21,7 @@ def index(request):
             d.save()
         return render(request, 'diagnose/index.html',)
     form = DiagnoseForm()
-    return render(request, 'diagnose/index.html', {'form': form})
+    return render(request, 'diagnose/index.html', {'form': form, 'name': request.user.username})
 
 
 

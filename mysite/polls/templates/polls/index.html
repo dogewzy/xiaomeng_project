@@ -20,9 +20,9 @@
         <li><a href="http://localhost:8000/medicine">药品管理</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-      	<li><a href="http://localhost:8000/polls/logout"><span ></span> 登出</a></li>
-      	<li><a href="http://localhost:8000/polls/login"><span ></span> 登陆</a></li>
-        <li>
+      	<li id="logout"><a href="http://localhost:8000/polls/logout"><span ></span> 登出</a></li>
+      	<li id="login"><a href="http://localhost:8000/polls/login"><span ></span> 登陆</a></li>
+        <li id="user">
           {% block user %}
           {% endblock %}
         </li>

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .forms import AddForm, PriceForm, SearchForm
-from .models import Price, Medicine, calculate
+from .models import Price, Medicine
 from django.contrib.auth.decorators import permission_required
 
 
@@ -62,11 +62,21 @@ def display(request):
     if request.method == 'POST':
         form = SearchForm(request.POST)
         if form.is_valid():
+            # context中需要num，p_num，total_cost,man,一个药品信息的list
             num = form.cleaned_data['划价编号']
             price = Price.objects.get(划价编号=num)
-            context = {
+            p_num = price.病人编号
+            man = price.操作人
+            li = price.get_medicine_list()
+            total_cost = price.get_total_price()
+            return render(request, 'price/display.html', {
+                'num': num,
+                'p_num': p_num,
+                'man': man,
+                'li': li,
+                'total_cost': total_cost,
+            })
 
-            }
     else:
         form = SearchForm()
         return render(request, 'price/search.html', {'form': form})

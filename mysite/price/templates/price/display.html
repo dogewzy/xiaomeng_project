@@ -4,7 +4,7 @@
 
 
 
-
+<h3>划价信息</h3>
   <table class="table">
     <thead>
       <tr>
@@ -16,11 +16,32 @@
     </thead>
     <tbody>
       <tr>
-          <td>{{ context.num1 }} </td>
-          <td>{{ context.num2 }}</td>
-          <td>{{ context.cost }}</td>
-          <td>{{ context.man }}</td>
+          <td>{{ num }} </td>
+          <td>{{ p_num }}</td>
+          <td>{{ total_cost }}</td>
+          <td>{{ man }}</td>
       </tr>
+    </tbody>
+  </table>
+<h3>药品明细</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>药品名称</th>
+        <th>药品数量</th>
+        <th>单价</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for medicine in li %}
+      <tr>
+
+          <td>{{ medicine.0 }} </td>
+          <td>{{ medicine.1 }}</td>
+          <td>{{ medicine.2 }}</td>
+
+      </tr>
+     {% endfor %}
     </tbody>
   </table>
 {% endblock %}

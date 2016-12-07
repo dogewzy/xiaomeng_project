@@ -2,6 +2,7 @@
 
 {% block patient_form %}
 <p>您还没有登陆，请先登录</p>
+<p>或者您账号的权限不足，请使用更高权限的账号</p>
 <form action="http://localhost:8000/polls/login/" method="post">
     {% csrf_token %}
     {{ form }}

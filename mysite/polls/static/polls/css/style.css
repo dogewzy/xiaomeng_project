@@ -1,6 +1,2 @@
-li a {
-    color: green;
-}
-body {
-    background:url("F:\ddjj\x\mysite\polls\static\polls\img\522.png") no-repeat;
-}
+{% load static %}
+body { background: white url("images/522.png") no-repeat right bottom;}
